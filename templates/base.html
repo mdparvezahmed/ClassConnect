@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ClassConnect{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>ClassConnect</h1>
+            <nav>
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'host' %}">Host</a>
+                <a href="{% url 'view' %}">View</a>
+                <a href="{% url 'file' %}">File</a>
+
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ClassConnect - Local Screen Sharing Made Simple</p>
+        </div>
+    </footer>
+
+    {% block extra_js %}{% endblock %}
+
+</body>
+
+</html>

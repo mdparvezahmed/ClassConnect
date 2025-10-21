@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}ClassConnect-Home{% endblock %}
+
+{% block content %}
+<div class="welcome-section">
+    <h2>Welcome to ClassConnect👋</h2>
+    <p>Share your screen and files in classroom within local Wi-Fi network.</p>
+
+    <div class="feature-cards">
+        <div class="card">
+            <h3>🎥 Screen Sharing</h3>
+            <p>Share your screen with students in real-time.</p>
+            <div class="card-actions">
+                <a href="{% url 'host' %}" class="btn btn-primary">Start Hosting</a>
+                <a href="{% url 'view' %}" class="btn btn-secondary">Join as Viewer</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="info-section">
+        <h3>How to Use:</h3>
+        <ol>
+            <li><strong>Host:</strong> Click "Start Hosting" and share your screen</li>
+            <li><strong>Viewers:</strong> Click "Join as Viewer" to see the host's screen</li>
+            <li><strong>Files:</strong> Upload and share files with all participants</li>
+        </ol>
+
+        <div class="alert">
+            <strong>Note:</strong> Make sure all devices are connected to the same Wi-Fi network.
+        </div>
+    </div>
+
+</div>
+{% endblock %}

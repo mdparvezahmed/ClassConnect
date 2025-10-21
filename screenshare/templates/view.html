@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{%load static %}
+{% block title %}ClassConnect - View{% endblock %}
+
+{% block content %}
+
+<div class="viewer-section">
+    <h2>View Shared Screen</h2>
+    <p>watching the host's screen stream</p>
+    <div class="status-panel">
+        <div class="status-item">
+            <strong>Connection:</strong><span id="connectionStatus">Connecting...</span>
+        </div>
+        <div class="status-item">
+            <strong>Stream:</strong><span id="streamStatus">Waiting for stream...</span>
+        </div>
+    </div>
+    <div class="video-container" id="videoContainer">
+        <video id="remoteVideo" autoplay></video>
+        <button class="fullscreen-btn" id="fullscreenButton">
+            ⛶
+        </button>
+    </div>
+</div>
+
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'js/view.js' %}"></script>
+{% endblock %}

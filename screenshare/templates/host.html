@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Host Screen{% endblock %}
+
+{% block content %}
+<div class="host-section">
+    <h1>Host a Screen Share</h1>
+    <p>Share your screen with viewers on the local network.</p>
+
+    <div class="controll-panel">
+        <button id="startButton" class="btn btn-primary">Start Sharing</button>
+        <button id="stopButton" class="btn btn-danger" disabled>Stop Sharing</button>
+    </div>
+    <div class="status-panel">
+        <div class="status-item"><strong>Status:</strong> <span id="status">Not Sharing</span></div>
+        <div class="status-item"><strong>Connection:</strong> <span id="connectionStatus">Disconnected</span></div>
+        <div class="status-item">
+            <strong>Viewers Connected:</strong> <span id="viewerCount">0</span>
+        </div>
+    </div>
+    <div class="video-container">
+        <video id="localVideo" autoplay muted></video>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/host.js' %}"></script>
+{% endblock %}
