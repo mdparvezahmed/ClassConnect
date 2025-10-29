@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-(h30@aw-(s!xx+jscrwcer0#5s)q=uu5)*db9bw#@p0p_=qeg)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
     'classConnect',
     'screenshare',
     'filemanager',
@@ -71,6 +72,13 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'classConnect.wsgi.application'
+
+ASGI_APPLICATION = 'classConnect.asgi.application'
+CHANNEL_LAYERS = {
+    'default':{
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    }
+}
 
 
 # Database

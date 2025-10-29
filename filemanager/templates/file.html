@@ -1,12 +1,66 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/file.css' %}?v=1.0">
+{% endblock %}
 {% block title %}File-Share{% endblock %}
 
 {% block content %}
 <div class="share-section">
-    <h2>File Sharing 📁</h2>
-    <p>Upload and Download files to share with classes</p>
+    <h2>File Sharing</h2>
+    <p>Upload and download files to share with classes</p>
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="upload-section">
+        <h3>Upload File</h3>
+        <form method="post" enctype="multipart/form-data" class="upload-form" id="uploadForm">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.file }}
+
+            </div>
+            <button type="submit" class="btn btn-primary" id="uploadBtn">Upload File</button>
+        </form>
+    </div>
+
+    <div class="file-section">
+        <h3>Shared Files</h3>
+        {% if files %}
+        <div class="files-list">
+            {% for file in files %}
+            <div class="file-item">
+                <div class="file-info">
+                    <span class="file-icon">📄</span>
+                    <div class="file-details">
+                        <strong>{{ file.filename }}</strong>
+                        <small>{{ file.uploaded_at|date:"M d, Y H:i" }}</small>
+                    </div>
+                </div>
+                <div class="file-actions">
+                    <a href="{{ file.file.url }}" class="btn btn-success btn-small" download>Download</a>
+                    <button class="btn btn-small btn-danger delete-btn" data-file-id="{{ file.id }}"
+                        data-filename="{{ file.filename }}">Delete</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>No files have been shared yet.</p>
+        {% endif %}
+    </div>
 </div>
+<form id="deleteForm" method="post" style="display: none;">
+    {% csrf_token %}
+</form>
+
+{% endblock %}
 
 
+{% block extra_js %}
+<script src="{% static 'js/filemanager.js' %}?v=4.0"></script>
 {% endblock %}

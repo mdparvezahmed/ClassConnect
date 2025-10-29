@@ -3,5 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    path('share/', views.share_file, name='file'),
+    path('share/', views.share, name='file'),
+    path('delete/<int:file_id>/', views.delete_file, name='delete_file'),
 ]
