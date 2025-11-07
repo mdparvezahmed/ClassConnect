@@ -81,3 +81,68 @@
     color: #95a5a6;
     padding: 2rem;
 }
+
+/* Responsive tweaks for small screens (phones) */
+@media (max-width: 600px) {
+    .upload-section,
+    .file-section {
+        padding: 1rem;
+    }
+
+    .file-input {
+        padding: 0.5rem;
+    }
+
+    .files-list {
+        margin-top: 0.75rem;
+    }
+
+    .file-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+        padding: 0.75rem;
+    }
+
+    .file-info {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .file-icon {
+        font-size: 1.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .file-actions {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 0.5rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    
+    .file-actions .btn {
+        flex: 1 1 auto; 
+        min-width: 0; 
+    }
+
+    .file-actions .btn + .btn {
+        margin-left: 0; 
+    }
+
+    .file-details strong {
+        font-size: 1rem;
+    }
+
+    .file-details small {
+        font-size: 0.8rem;
+    }
+
+    .no-files {
+        padding: 1rem;
+    }
+}
